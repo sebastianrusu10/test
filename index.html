@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IT Specialist: Python – Certiport Exam Reference</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Highlight.js theme (dark, VS Code-like) -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+
+    <!-- Your page styles -->
+    <style>
+        :root {
+            --bg: #020617;
+            --surface: #020617;
+            --card: #020617;
+            --accent: #38bdf8;
+            --border: #1f2937;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --radius-lg: 24px;
+            --radius-md: 18px;
+            --shadow-soft: 0 22px 48px rgba(15, 23, 42, 0.9);
+            --shadow-card: 0 16px 36px rgba(15, 23, 42, 0.95);
+            --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+            --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        /* Global */
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at top left, #0b1120 0, #020617 60%, #020617 100%);
+            color: var(--text);
+            font-family: var(--font-main);
+            line-height: 1.7;
+            font-size: 18px;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top bar */
+
+        .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding: 1.1rem 1.4rem 1rem;
+            background: linear-gradient(90deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.96));
+            border-bottom: 1px solid rgba(31, 41, 55, 0.98);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .brand {
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-size: 1.05rem;
+            color: var(--accent);
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-top: 0.2rem;
+        }
+
+        /* Content layout */
+
+        .content {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 1.4rem 1.2rem 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Domains & blocks */
+
+        .domain {
+            background: radial-gradient(circle at top, rgba(15, 23, 42, 0.98), #020617 45%, #020617 100%);
+            border-radius: 28px;
+            border: 1px solid rgba(24, 34, 52, 0.99);
+            padding: 1.4rem 1.15rem 1.6rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .domain h1 {
+            font-size: 1.35rem;
+            margin: 0 0 0.8rem;
+            font-weight: 650;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #f9fafb;
+        }
+
+        .block {
+            margin-top: 0.7rem;
+            padding: 0.9rem 0.8rem 1rem;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(31, 41, 55, 0.99);
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.94));
+            box-shadow: var(--shadow-card);
+        }
+
+        .block + .block {
+            margin-top: 0.7rem;
+        }
+
+        .block h2 {
+            font-size: 1.1rem;
+            margin: 0 0 0.55rem;
+            font-weight: 630;
+            color: var(--accent);
+        }
+
+        .block h3 {
+            font-size: 1rem;
+            margin: 0.45rem 0 0.3rem;
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        .block h4 {
+            font-size: 0.96rem;
+            margin: 0.35rem 0 0.25rem;
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        /* Text, lists */
+
+        p {
+            margin: 0 0 0.45rem;
+            font-size: 0.96rem;
+            color: var(--muted);
+        }
+
+        ul,
+        ol {
+            margin: 0.2rem 0 0.5rem 1.25rem;
+            padding: 0;
+            font-size: 0.94rem;
+            color: var(--muted);
+        }
+
+        li + li {
+            margin-top: 0.16rem;
+        }
+
+        /* Code blocks */
+
+        pre {
+            margin: 0.4rem 0 0.8rem;
+            border-radius: 1.1rem;
+            background: #0b1120;
+            padding: 0.9rem 0.95rem 1rem;
+            border: 1px solid rgba(31, 41, 55, 0.99);
+            overflow-x: auto;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.95);
+            position: relative;
+        }
+
+        pre::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            border-radius: 1.1rem 0 0 1.1rem;
+            background: linear-gradient(180deg,
+                rgba(56, 189, 248, 0.95),
+                rgba(129, 140, 248, 0.95));
+        }
+
+        pre::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        pre::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        pre::-webkit-scrollbar-thumb {
+            background: rgba(55, 65, 81, 0.9);
+            border-radius: 999px;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.92rem;
+        }
+
+        /* highlight.js override for readability */
+
+        .hljs {
+            background: transparent !important;
+            color: #e5e7eb;
+            font-family: var(--font-mono);
+            font-size: 0.96rem;
+            line-height: 1.6;
+        }
+
+        /* Inline code */
+
+        p > code,
+        li > code {
+            background: rgba(15, 23, 42, 0.96);
+            padding: 0.1rem 0.35rem;
+            border-radius: 7px;
+            border: 1px solid rgba(31, 41, 55, 0.99);
+            font-size: 0.9rem;
+        }
+
+        /* Columns */
+
+        .columns {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 0.6rem;
+            margin: 0.25rem 0 0.45rem;
+        }
+
+        /* Precedence list */
+
+        .precedence {
+            margin-left: 1.25rem;
+            font-size: 0.93rem;
+            color: var(--muted);
+        }
+
+        .precedence li + li {
+            margin-top: 0.18rem;
+        }
+
+        /* Responsive */
+
+        @media (min-width: 768px) {
+            .content {
+                padding: 1.7rem 1.6rem 3.2rem;
+                gap: 1.7rem;
+            }
+
+            .domain {
+                padding: 1.5rem 1.5rem 1.7rem;
+            }
+
+            .columns {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .domain h1 {
+                font-size: 1.45rem;
+            }
+
+            .block h2 {
+                font-size: 1.16rem;
+            }
+
+            .hljs {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            html,
+            body {
+                font-size: 17px;
+            }
+
+            .top-bar {
+                padding-inline: 1rem;
+            }
+
+            .content {
+                padding-inline: 1rem;
+            }
+        }
+
+        /* Optional: print tweaks so PDF keeps background colors */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="top-bar">
+    <div class="brand">IT Specialist: Python</div>
+    <div class="subtitle">Certiport Exam Reference</div>
+</header>
+
+<main class="content">
+
+    <!-- DOMAIN 1 -->
+    <section class="domain" id="domain1">
+        <h1>Domain 1 – Operations Using Data Types and Operators</h1>
+
+        <article class="block">
+            <h2>1.1 Core Data Types & Type Conversion</h2>
+            <p>Identify built-in types, select the correct type for a scenario, and convert types when combining input,
+                calculations, and output.</p>
+
+            <div class="columns">
+                <div>
+                    <h3>Scalar types</h3>
+                    <ul>
+                        <li><strong>int</strong> – whole numbers: <code>5</code>, <code>-3</code>, <code>100</code></li>
+                        <li><strong>float</strong> – decimal / floating-point: <code>3.14</code>, <code>2.0</code>, <code>1e3</code></li>
+                        <li><strong>str</strong> – text: <code>"hello"</code>, <code>"42"</code>, <code>'A'</code></li>
+                        <li><strong>bool</strong> – logical values: <code>True</code>, <code>False</code></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Collection types</h3>
+                    <ul>
+                        <li><strong>list</strong> – ordered, mutable: <code>[1, 2, 3]</code></li>
+                        <li><strong>tuple</strong> – ordered, immutable: <code>(1, 2, 3)</code></li>
+                        <li><strong>dict</strong> – key–value mapping: <code>{"gold": 100}</code></li>
+                        <li><strong>set</strong> – unique elements, no fixed order: <code>{1, 2, 3}</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Type checking and conversion</h3>
+            <p>Exam items often show a snippet and ask for the type of a variable or the conversion needed to fix an error.</p>
+
+            <pre><code class="language-python">
+# check type
+type(42)                 # &lt;class 'int'&gt;
+isinstance(42, int)      # True
+
+# numeric &amp; string conversion
+int("42")                # 42
+float(15)                # 15.0
+str(10)                  # "10"
+
+# boolean conversion: 0 / empty -&gt; False, non-zero / non-empty -&gt; True
+bool(0)                  # False
+bool(10)                 # True
+bool("")                 # False
+bool("hi")               # True
+
+# build collections from other types
+list("abc")              # ['a', 'b', 'c']
+tuple([1, 2])            # (1, 2)
+set([1, 1, 2])           # {1, 2}
+            </code></pre>
+
+            <h3>int() conversion details and common errors</h3>
+            <pre><code class="language-python">
+# valid decimal strings
+int("10")         # 10
+int("+10")        # 10
+int("-10")        # -10
+
+# invalid (ValueError)
+# int("10.5")     # ValueError: invalid literal
+# int("abc")      # ValueError
+
+# optional base
+int("1010", 2)    # 10 (binary)
+int("ff", 16)     # 255 (hex)
+int("20", 8)      # 16 (octal)
+
+# typical exam trap
+value = "007"
+print(int(value)) # 7 (leading zeros ignored)
+            </code></pre>
+
+            <h3>Exam-style pattern: converting and checking type</h3>
+            <pre><code class="language-python">
+# Do not modify this line
+zip_code = 84095
+
+# convert the zip code to a string
+zip_code = str(zip_code)
+
+# print the data type of the zip code
+print(type(zip_code))    # &lt;class 'str'&gt;
+            </code></pre>
+        </article>
+
+        <article class="block">
+            <h2>1.2 Indexing, Slicing &amp; List Operations</h2>
+            <p>Access individual elements and slices; add, insert, delete, sort, merge, and reverse lists.</p>
+
+            <h3>Indexing &amp; slicing (strings and sequences)</h3>
+            <pre><code class="language-python">
+serial_number = "1111-2222-3333-4444"
+
+# indexing (0-based)
+serial_number[0]         # '1'
+serial_number[5]         # '2'
+serial_number[-1]        # '4' (last character)
+
+# slicing: seq[start:stop] (stop not included)
+serial_number[-4:]       # '4444'
+serial_number[5:14]      # '2222-3333'
+serial_number[:4]        # '1111'
+serial_number[::2]       # every second character
+            </code></pre>
+
+            <h3>Lists – create, modify, remove</h3>
+            <pre><code class="language-python">
+capitals = ["Chisinau", "Bucharest", "Kiev"]
+
+# add / insert / replace
+capitals.append("Moscow")           # add at end
+capitals.insert(1, "Iasi")          # insert at index 1
+capitals[0] = "Cluj"                # replace item at index 0
+
+# remove elements
+capitals.remove("Kiev")             # remove first matching value
+
+last_item = capitals.pop()          # remove and return last item
+second_item = capitals.pop(1)       # remove item at index 1
+            </code></pre>
+
+            <h3>Sorting, merging, reversing</h3>
+            <pre><code class="language-python">
+# sorting
+capitals = ["Tokyo", "Berlin", "London"]
+capitals.sort()                     # ['Berlin', 'London', 'Tokyo']
+capitals.sort(reverse=True)         # ['Tokyo', 'London', 'Berlin']
+
+# merging lists
+a = [1, 2]
+b = [3, 4]
+
+c = a + b           # [1, 2, 3, 4] (creates new list)
+a.extend(b)         # a becomes [1, 2, 3, 4]
+
+# reversing
+nums = [1, 2, 3, 4]
+nums.reverse()      # [4, 3, 2, 1] (in-place)
+
+# useful built-ins
+population = [100, 101, 102]
+max(population)     # 102
+min(population)     # 100
+len(population)     # 3
+sum(population)     # 303
+            </code></pre>
+
+            <h3>Exam-style task: highest and lowest values</h3>
+            <pre><code class="language-python">
+population = [34000, 24000, 38000, 48000, 45000]
+
+# assign highest and lowest population
+high_population = max(population)
+low_population = min(population)
+
+print(high_population)  # 48000
+print(low_population)   # 24000
+            </code></pre>
+        </article>
+
+        <article class="block">
+            <h2>1.3 Sets &amp; Dictionaries</h2>
+
+            <h3>Sets</h3>
+            <p>Tests focus on uniqueness and membership with <code>in</code>.</p>
+            <pre><code class="language-python">
+regions = {"north", "south", "east"}
+
+regions.add("west")
+regions.add("east")     # duplicate, set unchanged
+
+print(regions)          # order not guaranteed
+
+"east" in regions       # True
+"center" in regions     # False
+            </code></pre>
+
+            <h3>Dictionaries</h3>
+            <p>Read, update, and add key–value pairs.</p>
+            <pre><code class="language-python">
+coins = {
+    "gold": 100,
+    "silver": 50,
+    "bronze": 25
+}
+
+print(coins["gold"])     # 100
+coins["gold"] = 120      # change value
+coins["platinum"] = 200  # add new key
+
+# safe access with default
+height = coins.get("height", 0)
+
+# empty dict vs empty set
+empty_dict = {}
+empty_set = set()
+            </code></pre>
+        </article>
+
+        <article class="block">
+            <h2>1.4 Operators, %, //, Unary + / - and Precedence</h2>
+            <p>Evaluate expressions combining arithmetic, comparison, and logical operators.</p>
+
+            <h3>Arithmetic &amp; special operators % and //</h3>
+            <pre><code class="language-python">
+# basic arithmetic
+5 + 2      # 7
+5 - 2      # 3
+5 * 2      # 10
+5 / 2      # 2.5      (true division)
+
+# floor division and modulus
+5 // 2     # 2        (floor division)
+5 % 2      # 1        (remainder)
+
+# relationship between // and %
+a = 5
+b = 2
+q = a // b          # quotient
+r = a % b           # remainder
+# a == b * q + r    # always holds for integers
+
+# negative numbers: // is floor, not truncate
+-5 // 2    # -3  (floor: next lower integer)
+-5 % 2     # 1   (because -5 = 2 * (-3) + 1)
+            </code></pre>
+
+            <h3>Comparison, logical, membership, identity</h3>
+            <pre><code class="language-python">
+x = 5
+
+# comparison
+x == 5     # True
+x != 5     # False
+x &gt; 3      # True
+x &lt;= 7     # True
+
+# logical
+age = 20
+has_id = True
+
+(age &gt;= 18) and has_id      # True
+(age &lt; 18) or has_id        # True
+not has_id                  # False
+
+# membership
+colors = ["red", "green", "blue"]
+"red" in colors             # True
+"yellow" not in colors      # True
+
+# identity vs equality
+a = [1, 2, 3]
+b = a
+c = [1, 2, 3]
+
+a is b      # True  (same object in memory)
+a is c      # False (different objects)
+a == c      # True  (same contents)
+            </code></pre>
+
+            <h3>Unary + and -</h3>
+            <pre><code class="language-python">
+y = 5
+-y     # -5
++y     # 5   (returns value with same sign)
+            </code></pre>
+
+            <h3>Operator precedence (exam level)</h3>
+            <ol class="precedence">
+                <li><code>**</code> (exponent)</li>
+                <li>Unary <code>+</code>, <code>-</code>, <code>not</code></li>
+                <li><code>*</code>, <code>/</code>, <code>//</code>, <code>%</code></li>
+                <li><code>+</code>, <code>-</code></li>
+                <li>Comparisons (<code>&lt; &lt;= &gt; &gt;= == !=</code>)</li>
+                <li><code>and</code></li>
+                <li><code>or</code></li>
+            </ol>
+            <pre><code class="language-python">
+result = 2 + 3 * 4 &gt; 10 and not False
+# 3 * 4 = 12
+# 2 + 12 = 14
+# 14 &gt; 10 -&gt; True
+# not False -&gt; True
+# True and True -&gt; True
+            </code></pre>
+        </article>
+    </section>
+
+    <!-- DOMAIN 2 -->
+    <section class="domain" id="domain2">
+        <h1>Domain 2 – Flow Control with Decisions and Loops</h1>
+
+        <article class="block">
+            <h2>2.1 If / Elif / Else &amp; Compound Conditions</h2>
+            <p>Questions focus on which branch executes and on completing conditions.</p>
+
+            <h3>Basic if / elif / else</h3>
+            <pre><code class="language-python">
+score = 3000
+
+if score &gt; 10000:
+    print("Legendary player")
+elif score &gt; 5000:
+    print("Great player")
+else:
+    print("Keep trying")
+            </code></pre>
+
+            <h3>Nested if</h3>
+            <pre><code class="language-python">
+if score &gt;= 50:
+    if score &gt;= 90:
+        print("Excellent")
+    else:
+        print("Passed")
+else:
+    print("Failed")
+            </code></pre>
+
+            <h3>Simple vs compound conditions</h3>
+            <pre><code class="language-python">
+x = 8
+
+# simple
+x &gt; 0
+
+# compound
+x &gt; 0 and x &lt; 10
+
+age = 20
+has_ticket = True
+
+if age &gt;= 18 and has_ticket:
+    print("You may enter.")
+
+if not has_ticket:
+    print("You must buy a ticket.")
+            </code></pre>
+
+            <h3>Exam-style task: bonus based on sales</h3>
+            <pre><code class="language-python">
+sales_amount = 31000
+
+if sales_amount &gt; 30000:
+    bonus_amount = "5% bonus"
+else:
+    bonus_amount = "no bonus"
+
+print(bonus_amount)
+            </code></pre>
+        </article>
+
+        <article class="block">
+            <h2>2.2 Loops, Compound for/while, break, continue, pass</h2>
+            <p>Loops are tested for output prediction and for “process each item once” patterns.</p>
+
+            <h3>for loops and range()</h3>
+            <pre><code class="language-python">
+# range(stop): 0..stop-1 (stop excluded)
+for i in range(5):
+    print(i)         # 0 1 2 3 4
+
+# range(start, stop)
+for i in range(1, 27):
+    print(i)         # 1..26
+
+# range(start, stop, step)
+for i in range(10, 0, -2):
+    print(i)         # 10 8 6 4 2
+
+coins = ["gold", "silver", "bronze"]
+for coin in coins:
+    print(coin)
+            </code></pre>
+
+            <h3>Compound for loops</h3>
+            <p>In the exam, “compound for” usually means nested loops or loops using multiple variables / compound conditions.</p>
+
+            <h4>Nested for loops</h4>
+            <pre><code class="language-python">
+weapons = ["Sword", "Bow"]
+levels = [1, 2, 3]
+
+for weapon in weapons:
+    for level in levels:
+        print(weapon, "Level", level)
+# Sword Level 1
+# Sword Level 2
+# Sword Level 3
+# Bow Level 1
+# Bow Level 2
+# Bow Level 3
+            </code></pre>
+
+            <h4>for with multiple variables (tuple-unpacking)</h4>
+            <pre><code class="language-python">
+players = [("Alex", 100), ("Ben", 80), ("Cara", 120)]
+
+for name, score in players:
+    print(name, "has score", score)
+            </code></pre>
+
+            <h3>while loops</h3>
+            <pre><code class="language-python">
+score = 1200
+
+while score &gt; 1000:
+    print("Big score!", score)
+    score -= 100
+            </code></pre>
+
+            <h3>Compound while loops (multiple conditions)</h3>
+            <pre><code class="language-python">
+lives = 3
+score = 0
+
+while lives &gt; 0 and score &lt; 100:
+    print("Playing level...")
+    score += 30
+    lives -= 1
+            </code></pre>
+
+            <h3>Sentinel-controlled loop</h3>
+            <pre><code class="language-python">
+# keep asking until user types -1
+while True:
+    num = int(input("Enter a number (-1 to stop): "))
+    if num == -1:
+        break
+    # process num here
+            </code></pre>
+
+            <h3>break, continue, pass</h3>
+            <pre><code class="language-python">
+# break: exit loop immediately
+for i in range(1, 10):
+    if i == 5:
+        break
+    print(i)          # 1 2 3 4
+
+# continue: skip to next iteration
+for i in range(1, 6):
+    if i % 2 == 0:
+        continue
+    print(i)          # 1 3 5
+
+# pass: placeholder (does nothing)
+for i in range(5):
+    if i % 2 == 0:
+        pass          # TODO: handle even numbers later
+    else:
+        print(i)      # 1 3
+            </code></pre>
+
+            <h3>Counting, summing and searching patterns</h3>
+            <pre><code class="language-python">
+# counting / summing pattern
+total = 0
+count = 0
+
+for i in range(1, 6):
+    total += i       # sum
+    count += 1       # count
+print(total, count)  # 15 5
+
+# searching with break
+names = ["Ana", "Ben", "Cami"]
+
+found = False
+for name in names:
+    if name == "Ben":
+        found = True
+        break
+
+if found:
+    print("Found!")
+            </code></pre>
+
+            <h3>Exam-style task: printing every list element once</h3>
+            <pre><code class="language-python">
+locations = ['Bali','Auckland','Sydney','Bangkok','Tokyo']
+
+location = 0
+while location &lt; len(locations):
+    print(locations[location])
+    location += 1
+            </code></pre>
+
+            <h3>Nested loops with while and for</h3>
+            <pre><code class="language-python">
+game_state = True
+game_lives = 1
+
+while game_lives &lt;= 3:
+    for level in range(1, 4):
+        print("Level", level, "- lives:", game_lives)
+
+    if game_state is True:
+        game_lives += 1
+            </code></pre>
+
+            <h3>for-else and while-else</h3>
+            <pre><code class="language-python">
+# for-else: else runs only if no break
+numbers = [1, 3, 5]
+
+for n in numbers:
+    if n % 2 == 0:
+        print("Even found")
+        break
+else:
+    print("No even numbers")
+
+# output: No even numbers
+            </code></pre>
+
+            <pre><code class="language-python">
+x = 3
+
+while x &gt; 0:
+    print(x, end=" ")
+    x -= 1
+else:
+    print("Done")
+
+# output: 3 2 1 Done
+            </code></pre>
+
+            <h3>Index vs element when looping</h3>
+            <pre><code class="language-python">
+values = [10, 20, 30]
+
+# indexing with range(len())
+for i in range(len(values)):
+    print("index", i, "value", values[i])
+# index 0 value 10
+# index 1 value 20
+# index 2 value 30
+
+# direct iteration over elements
+for v in values:
+    print("value", v)
+# value 10
+# value 20
+# value 30
+            </code></pre>
+
+            <h3>Common infinite-loop trap</h3>
+            <pre><code class="language-python">
+x = 0
+while x &lt; 3:
+    print(x)
+    # x += 1   # missing increment =&gt; infinite loop
+
+# correct
+x = 0
+while x &lt; 3:
+    print(x)
+    x += 1
+# 0
+# 1
+# 2
+            </code></pre>
+
+            <h3>Common output-question traps</h3>
+            <ul>
+                <li><code>range(n)</code> is <code>0..n-1</code>, <code>range(a, b)</code> never includes <code>b</code>.</li>
+                <li>Nested loops: total iterations = product of ranges if no <code>break</code>.</li>
+                <li><code>break</code> stops only the innermost loop, not outer loops.</li>
+                <li><code>continue</code> skips the rest of the body for that iteration only.</li>
+                <li><code>for-else</code> / <code>while-else</code> run <code>else</code> only when the loop ends without <code>break</code>.</li>
+            </ul>
+        </article>
+    </section>
+
+    <!-- DOMAIN 3 -->
+    <section class="domain" id="domain3">
+        <h1>Domain 3 – Input and Output Operations</h1>
+
+        <article class="block">
+            <h2>3.1 File Handling: open, modes, with</h2>
+            <p>Choose correct file modes and predict behavior when reading and writing.</p>
+
+            <h3>Opening files</h3>
+            <p>Pattern: <code>open(filename, mode, encoding="utf-8")</code> for text files.</p>
+            <ul>
+                <li><code>"r"</code> – read (default), error if file does not exist.</li>
+                <li><code>"w"</code> – write, truncate file or create new.</li>
+                <li><code>"a"</code> – append, create if missing, writes go to end.</li>
+                <li><code>"x"</code> – create, fail if file exists.</li>
+                <li><code>"rb"</code>, <code>"wb"</code>, <code>"ab"</code> – binary modes (no text encoding).</li>
+                <li><code>"r+"</code> – read and write, file must exist, no truncate.</li>
+                <li><code>"w+"</code> – read and write, truncate or create new.</li>
+                <li><code>"a+"</code> – read and append, file pointer at end for writes.</li>
+            </ul>
+
+            <pre><code class="language-python">
+message = open("1.txt", "r", encoding="utf-8")
+content = message.read()
+message.close()
+            </code></pre>
+
+            <h3>with statement (context manager)</h3>
+            <pre><code class="language-python">
+with open("1.txt", "r", encoding="utf-8") as message:
+    content = message.read()
+    print(content)
+# file automatically closed here
+            </code></pre>
+
+            <h3>Reading and writing</h3>
+            <pre><code class="language-python">
+# read all text as a single string
+with open("1.txt", "r", encoding="utf-8") as f:
+    content = f.read()
+
+# read one line at a time
+with open("1.txt", "r", encoding="utf-8") as f:
+    first_line = f.readline()
+    second_line = f.readline()
+
+# read all lines into list
+with open("1.txt", "r", encoding="utf-8") as f:
+    lines = f.readlines()    # ['line1\\n', 'line2\\n', ...]
+
+# iterate directly over file object (line-by-line)
+with open("1.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        print(line.strip())
+            </code></pre>
+
+            <h3>Write / append / read-write modes</h3>
+            <pre><code class="language-python">
+# write (overwrites file)
+with open("log.txt", "w", encoding="utf-8") as f:
+    f.write("Start log\\n")
+    f.write("Line 2\\n")
+
+# append (adds at end, keeps old content)
+with open("log.txt", "a", encoding="utf-8") as f:
+    f.write("Appended line\\n")
+
+# read and write without truncating (r+)
+with open("data.txt", "r+", encoding="utf-8") as f:
+    text = f.read()
+    f.seek(0, 2)           # move to end of file
+    f.write("\\nMore data")
+
+# w+ truncates file first
+with open("temp.txt", "w+", encoding="utf-8") as f:
+    f.write("Hello")
+    f.seek(0)
+    print(f.read())        # 'Hello'
+            </code></pre>
+
+            <h3>Common file patterns (exam-style)</h3>
+            <pre><code class="language-python">
+# copy all lines from input.txt to output.txt
+with open("input.txt", "r", encoding="utf-8") as src:
+    with open("output.txt", "w", encoding="utf-8") as dst:
+        for line in src:
+            dst.write(line)
+
+# count lines in a file
+count = 0
+with open("data.txt", "r", encoding="utf-8") as f:
+    for _ in f:
+        count += 1
+print("Lines:", count)
+
+# append a line only if file exists
+import os
+
+if os.path.exists("log.txt"):
+    with open("log.txt", "a", encoding="utf-8") as f:
+        f.write("Another entry\\n")
+else:
+    print("log.txt not found")
+            </code></pre>
+
+            <h3>Checking existence, size, and basic os utilities</h3>
+            <pre><code class="language-python">
+import os
+import os.path
+
+path = "data"
+file_name = "scores.txt"
+full_path = os.path.join(path, file_name)
+
+# ensure directory exists
+if not os.path.isdir(path):
+    os.makedirs(path)
+
+# write a file in that directory
+with open(full_path, "w", encoding="utf-8") as f:
+    f.write("10\\n20\\n30\\n")
+
+# check existence and size
+if os.path.exists(full_path):
+    size = os.path.getsize(full_path)
+    print("File size:", size, "bytes")
+
+# rename file
+new_path = os.path.join(path, "scores_old.txt")
+os.rename(full_path, new_path)
+
+# remove file
+if os.path.isfile(new_path):
+    os.remove(new_path)
+            </code></pre>
+
+            <h3>Exam-style task: open and display file content</h3>
+            <pre><code class="language-python">
+# open the file
+content = open("list.txt", "r", encoding="utf-8")
+
+# display the text
+print(content.read())
+
+content.close()
+            </code></pre>
+        </article>
+
+        <article class="block">
+            <h2>3.2 Console Input &amp; String Formatting</h2>
+
+            <h3>input and type casting</h3>
+            <pre><code class="language-python">
+text = input("Say something: ")
+print("You said:", text)
+
+age = int(input("Enter your age: "))
+price = float(input("Enter price: "))
+            </code></pre>
+
+            <h3>str.format()</h3>
+            <pre><code class="language-python">
+player = "Alex"
+score = 303
+level = 5
+
+print("{} has {} points and reached level {}."
+      .format(player, score, level))
+
+print("{1} has {0} points".format(score, player))
+# Alex has 303 points
+            </code></pre>
+
+            <h3>Old % formatting (basic)</h3>
+            <pre><code class="language-python">
+player = "Alex"
+score = 10
+ratio = 10 / 3
+
+print("Player %s, score: %d" % (player, score))
+print("Ratio: %.2f" % ratio)    # 2 decimal places
+            </code></pre>
+
+            <h3>Exam-style task: formatted sentence</h3>
+            <pre><code class="language-python">
+chickens = 50
+
+txt = "We have {:&lt;4} chickens."
+print(txt.format(chickens))
+            </code></pre>
+        </article>
+
+        <article class="block">
+            <h2>3.3 Command-line Arguments (sys.argv)</h2>
+            <p><code>sys.argv</code> is a list of strings from the command line. Index correctly and cast to the right type.</p>
+
+            <h3>Basic pattern</h3>
+            <pre><code class="language-python">
+import sys
+
+# sys.argv[0] is the script name
+# sys.argv[1], sys.argv[2], ... are arguments
+
+if len(sys.argv) &lt; 3:
+    print("Usage: python script.py filename count")
+    sys.exit(1)
+
+filename = sys.argv[1]
+count = int(sys.argv[2])
+
+print("Filename:", filename)
+print("Count:", count)
+            </code></pre>
+
+            <h3>Typical mistakes</h3>
+            <ul>
+                <li>Using <code>sys.argv[0]</code> instead of first argument.</li>
+                <li>Forgetting <code>int()</code> / <code>float()</code> conversions.</li>
+                <li>Indexing without checking <code>len(sys.argv)</code>.</li>
+            </ul>
+
+            <h3>Optional / default argument pattern</h3>
+            <pre><code class="language-python">
+import sys
+
+# default value
+mode = "easy"
+
+if len(sys.argv) &gt;= 2:
+    mode = sys.argv[1]
+
+print("Game mode:", mode)
+            </code></pre>
+        </article>
+    </section>
+
+    <!-- DOMAIN 4 -->
+    <section class="domain" id="domain4">
+        <h1>Domain 4 – Code Documentation and Structure</h1>
+
+        <article class="block">
+            <h2>4.1 Indentation, Comments, Docstrings, pydoc</h2>
+            <p>Python uses indentation to define blocks. Incorrect indentation causes errors or changes program logic.</p>
+
+            <h3>Indentation &amp; layout</h3>
+            <pre><code class="language-python">
+if x &gt; 0:
+    print("Positive")
+    if x &gt; 10:
+        print("Big number")
+
+print("Outside the if")
+            </code></pre>
+            <p>PEP 8: 4 spaces per level, no tabs mixed with spaces, blank lines between top-level functions.</p>
+
+            <h3>Comments &amp; docstrings</h3>
+            <pre><code class="language-python">
+# This is a single-line comment
+score = 0  # comment at end of line
+
+def greet(name):
+    """Print a greeting to the user."""
+    print("Hello,", name)
+
+help(greet)
+print(greet.__doc__)
+            </code></pre>
+
+            <h3>pydoc</h3>
+            <pre><code class="language-python">
+# terminal / command line
+python -m pydoc datetime
+python -m pydoc datetime &gt; datetime.txt
+            </code></pre>
+        </article>
+
+        <article class="block">
+            <h2>4.2 Functions and Default Values</h2>
+            <p>Functions group reusable logic, with parameters and optional return values.</p>
+
+            <h3>Basic functions, parameters, return</h3>
+            <pre><code class="language-python">
+def add(a, b):
+    return a + b
+
+result = add(2, 3)   # 5
+
+def welcome():
+    print("Welcome to the next level!")
+    # no return -&gt; returns None by default
+            </code></pre>
+
+            <h3>Default arguments and keyword arguments</h3>
+            <pre><code class="language-python">
+def total_score(score, multiplier=1.5):
+    return score * multiplier
+
+print(total_score(1000))                  # uses default 1.5
+print(total_score(1000, multiplier=2))    # override default
+print(total_score(score=3, multiplier=1500))
+            </code></pre>
+
+            <h3>Exam-style task: function with default tax rate</h3>
+            <pre><code class="language-python">
+def sales_tax(amount, tax=0.08):
+    return amount * tax
+
+print(sales_tax(100))   # 8.0
+            </code></pre>
+
+            <h3>Argument count errors</h3>
+            <pre><code class="language-python">
+def greet(name):
+    print("Hello", name)
+
+greet("Alex")             # OK
+# greet()                 # TypeError: missing required argument
+# greet("Alex", "Ben")    # TypeError: too many positional arguments
+            </code></pre>
+
+            <h3>Parameter kinds and calling</h3>
+            <pre><code class="language-python">
+def func(a, b, c=10):
+    print(a, b, c)
+
+# positional only
+func(1, 2, 3)          # a=1, b=2, c=3
+func(1, 2)             # a=1, b=2, c=10 (default)
+
+# keyword arguments
+func(a=1, b=2, c=30)
+func(b=2, a=1)         # order can change with keywords
+
+# mixed (positional first, then keywords)
+func(1, b=2, c=40)
+
+# INVALID calls:
+# func(a=1, 2)         # positional argument follows keyword
+# func(1, a=2)         # multiple values for argument 'a'
+            </code></pre>
+
+            <h3>*args and **kwargs (exam-level awareness)</h3>
+            <pre><code class="language-python">
+def debug(*args, **kwargs):
+    print("Positional:", args)
+    print("Keyword:", kwargs)
+
+debug(1, 2, 3, mode="easy", level=5)
+# Positional: (1, 2, 3)
+# Keyword: {'mode': 'easy', 'level': 5}
+            </code></pre>
+
+            <h3>Mutable default argument trap</h3>
+            <pre><code class="language-python">
+# bad pattern
+def add_item_bad(item, items=[]):
+    items.append(item)
+    return items
+
+print(add_item_bad(1))   # [1]
+print(add_item_bad(2))   # [1, 2]  (same list reused!)
+
+# correct pattern
+def add_item_good(item, items=None):
+    if items is None:
+        items = []
+    items.append(item)
+    return items
+            </code></pre>
+
+            <h3>Placeholder function</h3>
+            <pre><code class="language-python">
+def feature_to_add_later():
+    pass
+            </code></pre>
+        </article>
+    </section>
+
+    <!-- DOMAIN 5 -->
+    <section class="domain" id="domain5">
+        <h1>Domain 5 – Troubleshooting and Error Handling</h1>
+
+        <article class="block">
+            <h2>5.1 Error Types</h2>
+
+            <h3>Syntax errors</h3>
+            <pre><code class="language-python">
+if x &gt; 0
+    print("Positive")     # SyntaxError (missing colon)
+            </code></pre>
+
+            <h3>Runtime errors (exceptions)</h3>
+            <pre><code class="language-python">
+10 / 0          # ZeroDivisionError
+int("abc")      # ValueError
+"abc" + 3       # TypeError
+l = [1, 2]
+l[10]           # IndexError
+d = {}
+d["missing"]    # KeyError
+            </code></pre>
+
+            <h3>Logic errors</h3>
+            <p>Program runs without exceptions but produces wrong results due to incorrect logic.</p>
+        </article>
+
+        <article class="block">
+            <h2>5.2 Exception Handling: try / except / else / finally / raise</h2>
+            <p>Catch and handle errors so the program fails gracefully.</p>
+
+            <pre><code class="language-python">
+try:
+    x = int(input("Enter number: "))
+    y = 10 / x
+except ValueError:
+    print("Not a valid integer.")
+except ZeroDivisionError:
+    print("Cannot divide by zero.")
+else:
+    print("Result:", y)        # only if no exception
+finally:
+    print("This always runs.") # cleanup code
+            </code></pre>
+
+            <h3>Multiple exception types, raise</h3>
+            <pre><code class="language-python">
+figuratives = [
+    "Simile", "Metaphor", "Personification",
+    "Hyperbole", "Onomatopoeia"
+]
+
+try:
+    figurative_input = int(input("Enter a number 1-5: "))
+    figurative = figuratives[figurative_input - 1]
+except (ValueError, IndexError):
+    print("You did not enter a valid number.")
+else:
+    print("You chose the figurative:", figurative)
+finally:
+    print("Thank you for playing!")
+            </code></pre>
+
+            <pre><code class="language-python">
+def to_celsius(temp_f):
+    if temp_f &lt; -459.67:
+        raise ValueError("Temperature cannot be below absolute zero.")
+    return (temp_f - 32) * 5 / 9
+            </code></pre>
+
+            <h3>Exam-style task: simple error check</h3>
+            <pre><code class="language-python">
+x = 5
+y = 0
+
+try:
+    x /= y
+except:
+    print("You may have tried to divide by zero")
+finally:
+    print("Thank you for playing")
+            </code></pre>
+        </article>
+
+        <article class="block">
+            <h2>5.3 Unit Testing with unittest</h2>
+            <p>Unit tests verify that functions and methods behave as expected.</p>
+            <pre><code class="language-python">
+import unittest
+
+def double(x):
+    return x * 2
+
+class TestMain(unittest.TestCase):
+
+    def test_double_positive(self):      # method name must start with test_
+        self.assertEqual(double(3), 6)
+
+    def test_double_zero(self):
+        self.assertEqual(double(0), 0)
+
+if __name__ == "__main__":
+    unittest.main()
+            </code></pre>
+
+            <h3>Common assertion methods (exam list)</h3>
+            <pre><code class="language-python">
+self.assertEqual(a, b)         # a == b
+self.assertNotEqual(a, b)      # a != b
+self.assertTrue(x)             # bool(x) is True
+self.assertFalse(x)            # bool(x) is False
+self.assertIn(a, b)            # a in b
+self.assertIs(a, b)            # a is b (same object)
+self.assertIsInstance(obj, cls)    # isinstance(obj, cls)
+            </code></pre>
+
+            <h3>assertIsInstance example</h3>
+            <pre><code class="language-python">
+def square(x):
+    return x * x
+
+class TestSquare(unittest.TestCase):
+
+    def test_square_type(self):
+        result = square(3)
+        self.assertIsInstance(result, int)
+        self.assertEqual(result, 9)
+            </code></pre>
+        </article>
+
+        <article class="block">
+            <h2>5.4 assert Statement and unittest Output</h2>
+            <p><code>assert</code> checks a condition and raises <code>AssertionError</code> if it is false.</p>
+
+            <h3>Basic assert syntax</h3>
+            <pre><code class="language-python">
+x = 5
+assert x &gt; 0              # OK
+# assert x &lt; 0            # AssertionError
+
+y = -1
+assert y &gt;= 0, "y must be non-negative"
+# AssertionError: y must be non-negative
+            </code></pre>
+
+            <h3>Handling AssertionError</h3>
+            <pre><code class="language-python">
+def divide(a, b):
+    assert b != 0, "b must not be zero"
+    return a / b
+
+try:
+    result = divide(10, 0)
+except AssertionError as e:
+    print("Error:", e)
+            </code></pre>
+
+            <h3>More unittest assertion methods</h3>
+            <pre><code class="language-python">
+import unittest
+
+class TestValues(unittest.TestCase):
+
+    def test_none(self):
+        value = None
+        self.assertIsNone(value)
+        # self.assertIsNotNone(value)  # would fail
+
+    def test_membership(self):
+        data = [1, 2, 3]
+        self.assertIn(2, data)
+        self.assertNotIn(4, data)
+
+    def test_float_almost_equal(self):
+        x = 0.1 + 0.2
+        self.assertAlmostEqual(x, 0.3, places=7)
+
+    def test_exception(self):
+        with self.assertRaises(ZeroDivisionError):
+            1 / 0
+            </code></pre>
+
+            <h3>Common unittest output patterns</h3>
+            <ul>
+                <li><code>.</code> – test passed.</li>
+                <li><code>F</code> – test failed (assertion failed).</li>
+                <li><code>E</code> – error while running test (exception not handled by the test).</li>
+            </ul>
+
+            <h3>Exam-style: which assert fails?</h3>
+            <pre><code class="language-python">
+import unittest
+
+def triple(x):
+    return x * 3
+
+class TestTriple(unittest.TestCase):
+
+    def test_triple(self):
+        self.assertEqual(triple(2), 6)
+        self.assertNotEqual(triple(3), 8)
+        self.assertTrue(triple(0) == 0)
+        self.assertFalse(triple(1) == 4)
+        self.assertIsInstance(triple(2), int)
+            </code></pre>
+        </article>
+    </section>
+
+    <!-- DOMAIN 6 -->
+    <section class="domain" id="domain6">
+        <h1>Domain 6 – Operations Using Modules and Tools</h1>
+
+        <article class="block">
+            <h2>6.1 io, os, os.path, sys</h2>
+
+            <h3>io.StringIO – in-memory text stream</h3>
+            <pre><code class="language-python">
+import io
+
+game_stream = io.StringIO()
+
+game_stream.write("Level 1\\n")
+game_stream.write("Level 2\\n")
+
+game_stream.seek(0)
+print(game_stream.read())
+            </code></pre>
+
+            <h3>os and os.path – working with the file system</h3>
+            <pre><code class="language-python">
+import os
+import os.path
+
+folder = "data"
+filename = "scores.txt"
+file_path = os.path.join(folder, filename)
+
+# ensure directory exists
+if not os.path.isdir(folder):
+    os.makedirs(folder)
+
+# create file with some scores
+with open(file_path, "w", encoding="utf-8") as f:
+    f.write("100\\n200\\n300\\n")
+
+# list .txt files in a directory
+for name in os.listdir(folder):
+    if name.endswith(".txt"):
+        print("Text file:", name)
+
+# path tests
+print(os.path.exists(file_path))   # True
+print(os.path.isfile(file_path))   # True
+print(os.path.isdir(folder))       # True
+
+# split into directory and base name
+dir_name, base_name = os.path.split(file_path)
+print(dir_name)    # 'data'
+print(base_name)   # 'scores.txt'
+            </code></pre>
+
+            <h3>sys – command line and exit</h3>
+            <pre><code class="language-python">
+import sys
+
+print(sys.argv)             # list of command-line arguments
+
+if len(sys.argv) &lt; 2:
+    print("Please provide a name.")
+    sys.exit()
+
+name = sys.argv[1]
+print("Hello", name)
+            </code></pre>
+        </article>
+
+        <article class="block">
+            <h2>6.2 math, datetime, random</h2>
+
+            <h3>math</h3>
+            <pre><code class="language-python">
+import math
+
+math.fabs(-8.3)        # 8.3
+math.ceil(4.2)         # 5
+math.floor(4.9)        # 4
+math.trunc(4.9)        # 4
+math.fmod(13, 3)       # 1.0
+math.isnan(1)          # False
+math.sqrt(4)           # 2.0
+math.isqrt(3)          # 1
+math.pow(2, 3)         # 8.0
+math.pi                # 3.14159...
+            </code></pre>
+
+            <h3>datetime basics</h3>
+            <pre><code class="language-python">
+import datetime
+
+current_time = datetime.datetime.now()
+print(current_time)
+
+formatted = current_time.strftime("%m-%d-%Y")
+print(formatted)
+
+current_time.weekday()      # 0 = Monday, 6 = Sunday
+current_time.strftime("%A") # full weekday name
+            </code></pre>
+
+            <h3>Common date-only strftime formats</h3>
+            <pre><code class="language-python">
+import datetime
+
+d = datetime.date(2025, 11, 25)  # 25 November 2025
+
+# numeric variants (month/day/year and day/month/year)
+print(d.strftime("%m-%d-%Y"))  # 11-25-2025
+print(d.strftime("%d-%m-%Y"))  # 25-11-2025
+print(d.strftime("%Y-%m-%d"))  # 2025-11-25
+
+print(d.strftime("%m/%d/%Y"))  # 11/25/2025
+print(d.strftime("%d/%m/%Y"))  # 25/11/2025
+print(d.strftime("%Y/%m/%d"))  # 2025/11/25
+
+print(d.strftime("%m.%d.%Y"))  # 11.25.2025
+print(d.strftime("%d.%m.%Y"))  # 25.11.2025
+
+# with 2-digit year
+print(d.strftime("%m-%d-%y"))  # 11-25-25
+print(d.strftime("%d-%m-%y"))  # 25-11-25
+
+# textual month names
+print(d.strftime("%B %d, %Y"))   # November 25, 2025
+print(d.strftime("%d %B %Y"))    # 25 November 2025
+print(d.strftime("%b %d, %Y"))   # Nov 25, 2025
+print(d.strftime("%d %b %Y"))    # 25 Nov 2025
+
+# weekday + date
+print(d.strftime("%A, %B %d, %Y"))   # Tuesday, November 25, 2025
+print(d.strftime("%a, %d %b %Y"))    # Tue, 25 Nov 2025
+
+# ISO-like forms
+print(d.strftime("%Y-%m-%d"))        # 2025-11-25  (ISO date)
+print(d.strftime("%G-W%V-%u"))       # ISO year-week-weekday
+            </code></pre>
+
+            <h3>Common date+time strftime formats</h3>
+            <pre><code class="language-python">
+import datetime
+
+dt = datetime.datetime(2025, 11, 25, 21, 5, 3)
+
+# 24-hour clock
+print(dt.strftime("%Y-%m-%d %H:%M"))       # 2025-11-25 21:05
+print(dt.strftime("%d/%m/%Y %H:%M:%S"))    # 25/11/2025 21:05:03
+
+# 12-hour clock with AM/PM
+print(dt.strftime("%m-%d-%Y %I:%M %p"))    # 11-25-2025 09:05 PM
+print(dt.strftime("%I:%M:%S %p on %A"))    # 09:05:03 PM on Tuesday
+
+# with microseconds
+dt2 = datetime.datetime(2025, 11, 25, 21, 5, 3, 123456)
+print(dt2.strftime("%Y-%m-%d %H:%M:%S.%f"))
+# 2025-11-25 21:05:03.123456
+
+# compact numeric formats
+print(dt.strftime("%Y%m%d"))           # 20251125
+print(dt.strftime("%m%d%Y"))           # 11252025
+            </code></pre>
+
+            <h3>random and randrange/randint</h3>
+            <pre><code class="language-python">
+import random
+
+random.random()             # float in [0.0, 1.0)
+random.randint(1, 6)        # int in [1, 6] (both ends inclusive)
+random.randrange(5, 20, 2)  # odd number 5..19 (stop excluded)
+
+categories = ["Action", "Comedy", "Drama", "Horror"]
+
+random.shuffle(categories)         # shuffle list in place
+choice = random.choice(categories) # one random element
+two_random = random.sample(categories, 2)  # 2 distinct elements
+
+# randint vs randrange (boundaries)
+print(random.randint(1, 3))       # 1, 2 or 3
+print(random.randrange(1, 4))     # 1, 2 or 3
+            </code></pre>
+
+            <h3>Exam-style task: random choice from list</h3>
+            <pre><code class="language-python">
+import random
+
+baskets = ["Wicker", "Picnic", "Gift", "Market"]
+
+print(random.choice(baskets))
+            </code></pre>
+        </article>
+    </section>
+
+</main>
+
+<!-- Highlight.js core -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>
